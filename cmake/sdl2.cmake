@@ -1,0 +1,25 @@
+set(SDL_DIR ${CMAKE_SOURCE_DIR}/Third/SDL_x86_64-w64-mingw32)
+set(sdl2_ROOT ${SDL_DIR}/lib/cmake)
+find_package(sdl2 REQUIRED)
+get_target_property(sdl2_dll SDL2::SDL2 IMPORTED_LOCATION)
+
+# for debug
+
+get_target_property(sdl2_p1 SDL2::SDL2 INTERFACE_INCLUDE_DIRECTORIES)
+get_target_property(sdl2_p2 SDL2::SDL2 INTERFACE_LINK_LIBRARIES)
+get_target_property(sdl2_p3 SDL2::SDL2 INTERFACE_LINK_DIRECTORIES)
+get_target_property(sdl2_p4 SDL2::SDL2 IMPORTED_LINK_INTERFACE_LANGUAGES)
+get_target_property(sdl2_p5 SDL2::SDL2 IMPORTED_IMPLIB)
+get_target_property(sdl2_p6 SDL2::SDL2 IMPORTED_LOCATION)
+get_target_property(sdl2main_p1 SDL2::SDL2main IMPORTED_LOCATION)
+get_target_property(sdl2main_p2 SDL2::SDL2main INTERFACE_LINK_OPTIONS)
+
+message(sdl2_p1:${sdl2_p1})
+message(sdl2_p2:${sdl2_p2})
+message(sdl2_p3:${sdl2_p3})
+message(sdl2_p4:${sdl2_p4})
+message(sdl2_p5:${sdl2_p5})
+message(sdl2_p6:${sdl2_p6})
+message(sdl2main_p1:${sdl2main_p1})
+message(sdl2main_p2:${sdl2main_p2})
+message(SDL2_LIBRARIES:${SDL2_LIBRARIES})

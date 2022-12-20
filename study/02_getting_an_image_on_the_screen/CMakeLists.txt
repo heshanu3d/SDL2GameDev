@@ -1,0 +1,1 @@
+add_study_exe(02_getting_an_image_on_the_screen)

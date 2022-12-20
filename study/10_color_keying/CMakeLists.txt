@@ -1,0 +1,1 @@
+add_study_exe(10_color_keying)

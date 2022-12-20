@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD 17)
 include(cmake/sdl2.cmake)
 include(cmake/util.cmake)
 
-link_libraries(SDL2::SDL2main SDL2::SDL2)
+add_subdirectory(study)
 
-add_subdirectory(01_hello_SDL)
-
+build_all()

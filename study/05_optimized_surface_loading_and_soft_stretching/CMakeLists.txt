@@ -1,0 +1,1 @@
+add_study_exe(05_optimized_surface_loading_and_soft_stretching)

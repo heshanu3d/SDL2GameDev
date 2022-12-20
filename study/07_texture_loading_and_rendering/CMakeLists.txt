@@ -1,0 +1,1 @@
+add_study_exe(07_texture_loading_and_rendering)

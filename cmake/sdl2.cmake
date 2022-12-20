@@ -1,8 +1,14 @@
-set(SDL_DIR ${CMAKE_SOURCE_DIR}/Third/SDL_x86_64-w64-mingw32)
-set(sdl2_ROOT ${SDL_DIR}/lib/cmake)
+set(SDL2_DIR ${CMAKE_SOURCE_DIR}/Third/SDL2-devel-2.26.1-mingw/x86_64-w64-mingw32)
+set(sdl2_ROOT ${SDL2_DIR}/lib/cmake)
 find_package(sdl2 REQUIRED)
 get_target_property(sdl2_dll SDL2::SDL2 IMPORTED_LOCATION)
 
+set(SDL2_image_DIR ${CMAKE_SOURCE_DIR}/Third/SDL2_image-devel-2.6.2-mingw/x86_64-w64-mingw32)
+set(sdl2_image_ROOT ${SDL2_image_DIR}/lib/cmake)
+find_package(sdl2_image REQUIRED)
+get_target_property(sdl2_image_dll SDL2_image::SDL2_image IMPORTED_LOCATION)
+
+message(${sdl2_image_dll})
 # for debug
 
 get_target_property(sdl2_p1 SDL2::SDL2 INTERFACE_INCLUDE_DIRECTORIES)

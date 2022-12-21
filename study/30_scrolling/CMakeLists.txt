@@ -1,0 +1,1 @@
+add_study_exe(30_scrolling)

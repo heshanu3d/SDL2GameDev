@@ -1,0 +1,1 @@
+add_study_exe(28_per-pixel_collision_detection)

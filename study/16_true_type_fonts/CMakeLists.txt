@@ -1,0 +1,1 @@
+add_study_exe(16_true_type_fonts)

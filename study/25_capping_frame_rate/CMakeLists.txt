@@ -1,0 +1,1 @@
+add_study_exe(25_capping_frame_rate)

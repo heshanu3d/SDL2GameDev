@@ -1,0 +1,1 @@
+add_study_exe(11_clip_rendering_and_sprite_sheets)

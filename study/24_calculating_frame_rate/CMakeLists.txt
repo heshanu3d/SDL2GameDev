@@ -1,0 +1,1 @@
+add_study_exe(24_calculating_frame_rate)

@@ -1,0 +1,1 @@
+add_study_exe(20_force_feedback)

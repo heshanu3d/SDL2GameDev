@@ -1,0 +1,1 @@
+add_study_exe(27_collision_detection)

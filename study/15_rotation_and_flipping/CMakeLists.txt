@@ -1,0 +1,1 @@
+add_study_exe(15_rotation_and_flipping)

@@ -1,0 +1,1 @@
+add_study_exe(31_scrolling_backgrounds)

@@ -34,6 +34,9 @@ e.key.repeat == 0
 ### window
 - SDL_Window * SDL_CreateWindow(const char *title, int x, int y, int w, int h, Uint32 flags);
 - void SDL_DestroyWindow(SDL_Window * window);
+- void SDLCALL SDL_SetWindowTitle(SDL_Window * window, const char *title);
+- int SDLCALL SDL_SetWindowFullscreen(SDL_Window * window, Uint32 flags);
+- int SDLCALL SDL_GetWindowDisplayIndex(SDL_Window * window);
 
 ### surface
 - SDL_Surface * SDL_GetWindowSurface(SDL_Window * window);
@@ -75,6 +78,7 @@ e.key.repeat == 0
 - int TTF_Init(void);
 - void TTF_Quit(void);
 - TTF_Font * TTF_OpenFont(const char *file, int ptsize);
+- void SDLCALL TTF_CloseFont(TTF_Font *font);
 - SDL_Surface * TTF_RenderText_Solid(TTF_Font *font, const char *text, SDL_Color fg);
 
 ## timer
@@ -82,6 +86,8 @@ e.key.repeat == 0
 - void SDL_Delay(Uint32 ms);
 
 ## audio
+- int SDLCALL SDL_GetNumAudioDevices(int iscapture);
+- const char *SDLCALL SDL_GetAudioDeviceName(int index, int iscapture);
 - int Mix_OpenAudio(int frequency, Uint16 format, int channels, int chunksize);
 - void Mix_Quit(void);
 - Mix_Music * Mix_LoadMUS(const char *file);
@@ -101,6 +107,15 @@ e.key.repeat == 0
 ## event
 - int SDL_PollEvent(SDL_Event * event);
 - const Uint8 *SDL_GetKeyboardState(int *numkeys);
+
+## keyboard
+- SDL_Keymod SDLCALL SDL_GetModState(void);
+
+## io
+- SDL_RWops *SDLCALL SDL_RWFromFile(const char *file, const char *mode);
+- size_t SDLCALL SDL_RWwrite(SDL_RWops *context, const void *ptr, size_t size, size_t num);
+- int SDLCALL SDL_RWclose(SDL_RWops *context);
+- size_t SDLCALL SDL_RWread(SDL_RWops *context, void *ptr, size_t size, size_t maxnum);
 
 ## joystick
 - int SDL_NumJoysticks(void);
@@ -123,6 +138,12 @@ e.key.repeat == 0
 - Uint32 SDL_MapRGB(const SDL_PixelFormat * format, Uint8 r, Uint8 g, Uint8 b);
 - int SDL_SetColorKey(SDL_Surface * surface, int flag, Uint32 key);
 - int SDL_SetTextureColorMod(SDL_Texture * texture, Uint8 r, Uint8 g, Uint8 b);
+
+## clipboard
+- int SDLCALL SDL_SetClipboardText(const char *text);
+- char * SDLCALL SDL_GetClipboardText(void);
+
+
 
 # enum
 ## event

@@ -1,0 +1,1 @@
+add_study_exe(32_text_input_and_clipboard_handling)

@@ -1,0 +1,1 @@
+add_study_exe(33_file_reading_and_writing)

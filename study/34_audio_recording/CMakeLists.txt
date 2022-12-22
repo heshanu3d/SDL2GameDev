@@ -1,0 +1,1 @@
+add_study_exe(34_audio_recording)

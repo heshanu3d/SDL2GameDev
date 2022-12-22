@@ -1,0 +1,1 @@
+add_study_exe(35_window_events)

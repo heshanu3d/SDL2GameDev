@@ -56,8 +56,8 @@ endmacro()
 
 macro(build_all)
     add_custom_target(build_all
-            COMMAND "D:/IDE/JetBrains/CLion 2021.3.2/bin/cmake/win/bin/cmake.exe" ..
-            COMMAND "D:/IDE/JetBrains/CLion 2021.3.2/bin/cmake/win/bin/cmake.exe" --build . -j
+            COMMAND ${cmake} ..
+            COMMAND ${cmake} --build . -j
             )
 endmacro()
 

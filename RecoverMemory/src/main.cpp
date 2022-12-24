@@ -1,10 +1,6 @@
 //
 // Created by hs on 2022/12/24.
 //
-#include <SDL.h>
-
-/*This source code copyrighted by Lazy Foo' Productions (2004-2022)
-and may not be redistributed without written permission.*/
 
 //Using SDL and standard IO
 #include <SDL.h>

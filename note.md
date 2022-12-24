@@ -51,6 +51,7 @@ e.key.repeat == 0
 - SDL_Surface * SDL_ConvertSurface (SDL_Surface * src, const SDL_PixelFormat * fmt, Uint32 flags);
 - SDL_Surface * IMG_Load(const char *file);
 - SDL_Surface * TTF_RenderText_Solid(TTF_Font *font, const char *text, SDL_Color fg);
+- SDL_Surface * SDL_ConvertSurfaceFormat(SDL_Surface * src, Uint32 pixel_format, Uint32 flags);
 
 ## texture
 - SDL_bool SDL_SetHint(const char *name, const char *value)

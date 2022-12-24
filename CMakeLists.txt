@@ -6,5 +6,6 @@ include(cmake/sdl2.cmake)
 include(cmake/util.cmake)
 
 add_subdirectory(study)
+add_subdirectory(RecoverMemory)
 
 build_all()

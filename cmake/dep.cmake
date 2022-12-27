@@ -23,42 +23,16 @@ ExternalProject_Add(libtmx_download
 
 macro(unzip target)
     string(REGEX REPLACE ".zip" "" target_name "${target}")
-    add_custom_target(prepare_dir_${target_name}
-            COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/Third
-            )
-    add_custom_target(unzip_${target_name}
-            COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_SOURCE_DIR}/dep/${target}
-            DEPENDS ${CMAKE_SOURCE_DIR}/dep/${target} prepare_dir_${target_name}
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Third
-            )
+    if(NOT EXISTS "${CMAKE_SOURCE_DIR}/Third/${target_name}")
+        execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/Third)
+        execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/Third/${target_name})
+        execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_SOURCE_DIR}/dep/${target}
+                WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Third/${target_name})
+    endif()
 endmacro()
-
-macro(unzip_withdirname target)
-    string(REGEX REPLACE ".zip" "" target_name "${target}")
-    add_custom_target(prepare_dir_${target_name}
-            COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/Third
-            COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/Third/${target_name})
-    add_custom_target(unzip_${target_name}
-            COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_SOURCE_DIR}/dep/${target}
-            DEPENDS ${CMAKE_SOURCE_DIR}/dep/${target} prepare_dir_${target_name}
-            WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Third/${target_name}
-            )
-endmacro()
-
-set(zip_file_list SDL2-devel-2.26.1-mingw.zip
-        SDL2_ttf-devel-2.20.1-mingw.zip
-        SDL2_image-devel-2.6.2-mingw.zip
-        SDL2_mixer-devel-2.6.2-mingw.zip
-        tmx_1.2.0-win.zip)
 
 unzip(SDL2-devel-2.26.1-mingw.zip)
 unzip(SDL2_ttf-devel-2.20.1-mingw.zip)
 unzip(SDL2_image-devel-2.6.2-mingw.zip)
 unzip(SDL2_mixer-devel-2.6.2-mingw.zip)
-unzip_withdirname(tmx_1.2.0-win.zip)
-
-add_custom_target(unZipAll ALL)
-foreach(zip_file ${zip_file_list})
-    string(REGEX REPLACE ".zip" "" zip_file_name "${zip_file}")
-    add_dependencies(unZipAll unzip_${zip_file_name})
-endforeach()
+unzip(tmx_1.2.0-win.zip)

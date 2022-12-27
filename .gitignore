@@ -7,3 +7,4 @@ study/*.dll
 **/out
 Third
 **/build
+cmake/global.cmake

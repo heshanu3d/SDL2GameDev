@@ -5,7 +5,5 @@ bin
 study/*.exe
 study/*.dll
 **/out
-Third/**/win32
+Third
 **/build
-Third/zlib**
-Third/zlib-1.2.13/zconf.h

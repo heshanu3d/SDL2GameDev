@@ -1,4 +1,4 @@
-set(tmx_dir ${CMAKE_SOURCE_DIR}/Third/tmx_1.2.0)
+set(tmx_dir ${CMAKE_SOURCE_DIR}/Third/tmx_1.2.0-win)
 set(libtmx_dir ${CMAKE_SOURCE_DIR}/Third/tmx-tmx_1.2.0)
 add_custom_target(libtmx
         COMMAND ${cmake} -G "MinGW Makefiles" -S ${libtmx_dir} -B ${libtmx_dir}/build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${libtmx_dir}/out -DCMAKE_PREFIX_PATH=${libtmx_dir}/out

@@ -1,6 +1,6 @@
 #add_exe(01_hello_SDL)
 add_study_exe(01_hello_SDL)
-add_exe_static(01_hello_SDL)
+add_exe_static(01_hello_SDL${target_suffix})
 
 #add_executable(01_hello_SDL_static 01_hello_SDL.cpp)
 #set_target_properties(01_hello_SDL

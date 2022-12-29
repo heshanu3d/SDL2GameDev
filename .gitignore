@@ -3,6 +3,7 @@ bin
 .idea
 .vscode
 study/*.exe
+study/*_linux
 study/*.dll
 **/out
 Third

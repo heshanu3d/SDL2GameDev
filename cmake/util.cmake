@@ -34,9 +34,9 @@ macro(add_study_exe _target)
     set(study_dir ${CMAKE_SOURCE_DIR}/study)
     file(GLOB _${_target}_src_files "${CMAKE_CURRENT_LIST_DIR}/*.cpp" "${CMAKE_CURRENT_LIST_DIR}/*.c")
 #    message(_${_target}_src_files : ${_${_target}_src_files})
-    add_executable(${_target} ${_${_target}_src_files})
-    target_link_libraries(${_target} PRIVATE _SDL2)
-    set_target_properties(${_target} PROPERTIES
+    add_executable(${_target}${target_suffix} ${_${_target}_src_files})
+    target_link_libraries(${_target}${target_suffix} PRIVATE _SDL2)
+    set_target_properties(${_target}${target_suffix} PROPERTIES
             RUNTIME_OUTPUT_DIRECTORY ${study_dir}
             LIBRARY_OUTPUT_DIRECTORY ${study_dir}
             )

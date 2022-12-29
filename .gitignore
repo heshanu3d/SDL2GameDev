@@ -8,5 +8,4 @@ study/*.dll
 **/out
 Third
 **/build
-cmake/global.cmake
 dep_download

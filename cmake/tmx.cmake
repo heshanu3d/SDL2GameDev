@@ -1,5 +1,4 @@
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
-    set(tmx_dir ${CMAKE_SOURCE_DIR}/Third/tmx_1.2.0-win)
     if(NOT TARGET tmx::tmx)
         add_library(tmx::tmx SHARED IMPORTED)
         set_target_properties(tmx::tmx PROPERTIES

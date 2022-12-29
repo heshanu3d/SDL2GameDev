@@ -22,7 +22,7 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
 			URL https://github.com/baylej/tmx/releases/download/tmx_1.2.0/tmx_1.2.0-win.zip
 			)
 
-	macro(unzip target)
+	macro(unzip lib target)
 		string(REGEX REPLACE ".zip" "" target_name "${target}")
 		if(NOT EXISTS "${CMAKE_SOURCE_DIR}/Third/${target_name}")
 			execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/Third)
@@ -30,11 +30,14 @@ if (CMAKE_SYSTEM_NAME MATCHES "Windows")
 			execute_process(COMMAND ${CMAKE_COMMAND} -E tar xzf ${CMAKE_SOURCE_DIR}/dep/${target}
 					WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Third/${target_name})
 		endif()
+		set(${lib}_dir ${CMAKE_SOURCE_DIR}/Third/${target_name})
 	endmacro()
 
-	unzip(SDL2-devel-2.26.1-mingw.zip)
-	unzip(SDL2_ttf-devel-2.20.1-mingw.zip)
-	unzip(SDL2_image-devel-2.6.2-mingw.zip)
-	unzip(SDL2_mixer-devel-2.6.2-mingw.zip)
-	unzip(tmx_1.2.0-win.zip)
+	unzip(SDL2 			SDL2-devel-2.26.1-mingw.zip)
+	unzip(SDL2_ttf 		SDL2_ttf-devel-2.20.1-mingw.zip)
+	unzip(SDL2_image	SDL2_image-devel-2.6.2-mingw.zip)
+	unzip(SDL2_mixer 	SDL2_mixer-devel-2.6.2-mingw.zip)
+	unzip(tmx 			tmx_1.2.0-win.zip)
+
+	set(tmx_dir ${CMAKE_SOURCE_DIR}/Third/tmx_1.2.0-win)
 endif()

@@ -1,14 +1,18 @@
 set(out_dir ${CMAKE_SOURCE_DIR}/bin)
 
+if (EXISTS "${CMAKE_SOURCE_DIR}/bin" AND IS_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+    message("${CMAKE_SOURCE_DIR}/bin exists already, won't create")
+else()
+    execute_process( COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_SOURCE_DIR}/bin")
+    message(STATUS "create ${CMAKE_SOURCE_DIR}/bin")
+endif()
+
 macro(copy_dll target dll dst)
     get_filename_component(_dll_name ${dll} NAME)
-    if (EXISTS "${dst}/${_dll_name}")
-#        message(STATUS "${dll} already exists")
-    else()
-        add_custom_command(TARGET ${target}
-                POST_BUILD
+    if (NOT EXISTS "${dst}/${_dll_name}")
+        execute_process(
                 COMMAND ${CMAKE_COMMAND} -E copy ${dll} ${dst})
-#        message(STATUS "${dll} didn't exists, move them")
+        message(STATUS "${dll} didn't exists, move them")
     endif()
     unset(_dll_name)
 endmacro()
@@ -56,15 +60,10 @@ endmacro()
 
 macro(build_all)
     add_custom_target(build_all
-            COMMAND ${cmake} ..
-            COMMAND ${cmake} --build . -j
+            COMMAND cmake ..
+            COMMAND cmake --build . -j
             )
 endmacro()
 
-if (EXISTS "${CMAKE_SOURCE_DIR}/bin" AND IS_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
-    message("${CMAKE_SOURCE_DIR}/bin exists already, won't create")
-else()
-    execute_process( COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_SOURCE_DIR}/bin")
-    message(STATUS "create ${CMAKE_SOURCE_DIR}/bin")
-endif()
+
 

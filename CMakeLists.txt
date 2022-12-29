@@ -9,4 +9,4 @@ include(cmake/util.cmake)
 add_subdirectory(study)
 add_subdirectory(RecoverMemory)
 
-# build_all()
+build_all()

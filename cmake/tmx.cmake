@@ -1,24 +1,26 @@
-if (CMAKE_SYSTEM_NAME MATCHES "Windows")
-    if(NOT TARGET tmx::tmx)
-        add_library(tmx::tmx SHARED IMPORTED)
-        set_target_properties(tmx::tmx PROPERTIES
-                INTERFACE_INCLUDE_DIRECTORIES "${tmx_dir}/include"
-                IMPORTED_IMPLIB ${tmx_dir}/lib/libtmx.a)
-    endif()
-    if (NOT TARGET xml2::xml2)
-        add_library(xml2::xml2 SHARED IMPORTED)
-        set_target_properties(xml2::xml2 PROPERTIES
-                INTERFACE_INCLUDE_DIRECTORIES "${tmx_dir}/include/libxml2"
-                IMPORTED_IMPLIB ${tmx_dir}/lib/libxml2.a)
-    endif ()
-    if (NOT TARGET zlib::zlibstatic)
-        add_library(zlib::zlibstatic SHARED IMPORTED)
-        set_target_properties(zlib::zlibstatic PROPERTIES
-                INTERFACE_INCLUDE_DIRECTORIES "${tmx_dir}/include"
-                IMPORTED_IMPLIB ${tmx_dir}/lib/libzlibstatic.a)
-    endif ()
-    add_library(_tmx INTERFACE)
-    target_link_libraries(_tmx INTERFACE tmx::tmx xml2::xml2 zlib::zlibstatic)
+macro (tmx_load_lib lib)
+	if(NOT TARGET ${lib}::${lib})
+		add_library(${lib}::${lib} STATIC IMPORTED)
+		set_target_properties(${lib}::${lib} PROPERTIES
+			INTERFACE_INCLUDE_DIRECTORIES "${tmx_dir}/include"
+			IMPORTED_LOCATION ${tmx_dir}/lib/lib${lib}.a)
+	endif()	
+endmacro ()
+
+tmx_load_lib(tmx)
+tmx_load_lib(xml2)
+if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+	tmx_load_lib(z)
+elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
+	tmx_load_lib(zlibstatic)
+endif ()
+
+add_library(_tmx INTERFACE)
+if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -no-pie")
+	target_link_libraries(_tmx INTERFACE tmx::tmx xml2::xml2 z::z)
+elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
+	target_link_libraries(_tmx INTERFACE tmx::tmx xml2::xml2 zlibstatic::zlibstatic)
 endif ()
 
 macro(build_libtmx)

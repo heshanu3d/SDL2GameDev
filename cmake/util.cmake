@@ -60,8 +60,8 @@ endmacro()
 
 macro(build_all)
     add_custom_target(build_all
-            COMMAND cmake ..
-            COMMAND cmake --build . -j
+            COMMAND ${CMAKE_COMMAND} ..
+            COMMAND ${CMAKE_COMMAND} --build . -j
             )
 endmacro()
 
